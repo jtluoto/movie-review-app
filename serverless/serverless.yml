@@ -1,0 +1,84 @@
+service: kv
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-2 # London
+  profile: serverless-admin
+  stage: ${opt:stage, 'dev'}
+  environment:
+    MOVIES_TABLE: ${self:service}-${self:provider.stage}-movies
+    JWT_SECRET: kiskis824eva
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.MOVIES_TABLE}"
+
+custom:
+  scrapeRate:
+    dev: cron(0 0 * * ? 2099) # Never run
+    prod: cron(15 15 * * ? *)
+
+devScrapingSchedule: cron(15 15 * * ? *)
+
+functions:
+  movies-list:
+    handler: rest/movies/list.list
+    events:
+      - http:
+          path: movies
+          method: get
+          cors: true
+
+  movies-get:
+    handler: rest/movies/get.get
+    events:
+      - http:
+          path: movies/{id}
+          method: get
+          cors: true
+
+  movies-bulk-update:
+    handler: rest/movies/update.update
+    events:
+      - http:
+          path: movies
+          method: put
+          cors: true
+
+  movies-import:
+    handler: importer/import.import
+    timeout: 60
+    events:
+      - schedule: cron(0 * * * ? *)
+
+  movies-scrape-reviews:
+    handler: importer/scrapeReviews.scrapeReviews
+    timeout: 60
+    events:
+      - schedule: ${self:custom.scrapeRate.${self:provider.stage}}
+
+  schedule-list:
+    handler: rest/schedule/list.list
+    events:
+      - http:
+          path: schedule
+          method: get
+          cors: true
+
+  jwt-create:
+    handler: rest/jwt/create.create
+    timeout: 5
+    environment:
+      ADMIN_USERNAME: admin
+    events:
+      - http:
+          path: jwt
+          method: post
+          cors: true

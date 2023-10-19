@@ -1,0 +1,29 @@
+{
+  "name": "kv-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "Juha Luoto",
+  "license": "ISC",
+  "dependencies": {
+    "finnkino-wrapper": "0.0.1",
+    "google-search": "0.0.5",
+    "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "request-promise": "^1.0.2",
+    "underscore": "^1.8.3",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.4.0",
+    "chai": "^4.2.0",
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1",
+    "serverless-mocha-plugin": "^1.11.0",
+    "sinon": "^7.4.2"
+  }
+}

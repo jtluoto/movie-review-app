@@ -1,0 +1,521 @@
+/* Page lauyout (App.js) */
+:root {
+  --header-height: 70px;
+  --header-height-mobile: 80px;
+  --gold: rgb(199, 163, 101);
+  --black-background: rgb(27,28,29);
+}
+
+.mobile {
+  display: none;
+}
+
+.desktop {
+  display: initial;
+}
+
+.main {
+  background-color: var(--black-background);
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+.headerArea {
+  background-color: rgb(55, 55, 55);
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+}
+
+.contentArea {
+  min-height: 100vh;
+  max-width: 755px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--header-height);
+}
+
+/* Navigation */
+.toggleSidebarButton {
+  display: none;
+  float: right;
+  width: 70px;
+  height: 100%;
+  line-height: 90px;
+}
+
+.toggleSidebarButton button {
+  border: none                !important;
+  background-color: inherit   !important;
+  color: white                !important;
+}
+
+.navigationSidebar {
+  padding-top: var(--header-height);
+  display: none                     !important;
+  background-color: var(--gold) !important;
+}
+
+.navigationSidebar i {
+  color: black;
+}
+
+.navigationSidebar a {
+  color: black;
+}
+
+.navigationSidebar a:hover {
+  text-decoration: underline;
+}
+
+ul.navbar {
+  float: right;
+  list-style-type: none;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+ul.navbar li {
+  float: left;
+  line-height: var(--header-height);
+  vertical-align: middle;
+  text-align: center;
+}
+
+ul.navbar li a:hover {
+  color: var(--gold);
+}
+
+ul.navbar li a.activeTab:hover {
+  color: white;
+}
+
+.activeTab {
+  background-color: var(--black-background)
+}
+
+ul.navbar li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 0em 2em;
+}
+
+/* Title */
+
+.titleArea {
+  font-family: 'Poiret One', cursive;
+  display: grid;
+  grid-template-columns: auto auto;
+  float:left;
+  margin-left: 10px;
+}
+
+.mainTitle {
+  line-height: 70px;
+  vertical-align: middle;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.secondaryTitle {
+  text-transform: uppercase;
+  font-size: 15px;
+  border-left: 1px solid var(--gold);
+  margin: auto 15px;
+  padding-left: 15px;
+}
+
+.secondaryTitleBr {
+  display: block;
+}
+
+/* Movie list */
+
+.movieListItem {
+  display: grid;
+  grid-template-columns: 100px auto;
+  padding: 0px 10px 30px 10px;
+}
+
+.movieListItemPortrait {
+  display: block;
+  margin-top: 4px;
+  border: 1px solid var(--gold);
+}
+
+.movieListItemRightColumn {
+  padding-left: 20px;
+}
+
+.movieDisplayTitle {
+  display: block;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.movieOriginalDisplayTitle {
+  display: block;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.movieTitles {
+  margin-bottom: 5px;
+}
+
+.movieDirectors {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.sourceNameAndReviewStars {
+  display: inline-block;
+  margin-right: 30px;
+  margin-bottom: 8px;
+}
+
+.sourceNameAndReviewStars:last-of-type {
+    margin-right: 0;
+}
+
+.starsOfOneReview {
+  display: block;
+  margin-right: 1vw;
+  margin-bottom: 0.5vw;
+}
+
+.sourceNameOfTheReview {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.reviewLink a {
+  color: white;
+}
+
+.moreInfoModal .reviewLink a {
+  color: black;
+}
+
+.reviewLink a:hover {
+  color: var(--gold);
+}
+
+.linkIcon {
+  position: relative;
+}
+
+/* More info modal window */
+
+.modals.dimmer {
+  z-index: 20000;
+}
+
+.moreInfoModal .movieDirectors {
+  margin-bottom: 0px;
+}
+
+.movieGenres, .movieReleaseDate {
+  font-size: 15px;
+}
+
+.moreInfoButtonDiv {
+  display: block;
+}
+
+.linkButton {
+  margin-top: 5px;
+  background-color: var(--gold);
+  border: none;
+  color: black;
+  width: 101px;
+  height: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.linkButton:hover {
+  font-weight: bold;
+}
+
+.movieSynopsis {
+  font-size: 15px;
+  font-style: italic;
+  text-align: justify;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.movieActors {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.reviewTip {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Star icon (makes it possible to have half stars) */
+
+.star-icon {
+  color: #777;
+  font-size: 15px;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.star-icon.full:before {
+  color: var(--gold);
+  content: '\2605'; /* Full star in UTF-8 */
+  position: absolute;
+  left: 0;
+}
+
+.star-icon.half:before {
+  color: rgb(120, 160, 160);
+  content: '\2605'; /* Full star in UTF-8 */
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+@-moz-document url-prefix() { /* Firefox Hack :( */
+  .star-icon {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+
+.average .star-icon.full:before,
+.average .star-icon.half:before {
+  color: #fff;
+}
+
+.moreInfoModal .average .star-icon.full:before,
+.moreInfoModal .average .star-icon.half:before {
+  color: gray;
+}
+
+.starsOfOneReview a:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+/* Schedule */
+
+.scheduleForm {
+  margin-top: 0;
+}
+
+.showInfo {
+  display: grid;
+  grid-template-columns: 120px 100px auto;
+  margin-top: 30px;
+}
+
+.showTime {
+  font-size: 40px;
+  font-weight: 300;
+  padding-top: 10px;
+}
+
+.showInfoRightColumn {
+  padding-left: 20px;
+}
+
+.theatre {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+/* Edit movies */
+
+.editMovieListItem {
+  margin-top: 40px;
+}
+
+.editMovieReviewBox {
+  margin: 0 0 1em;
+}
+
+.editMovieReviewBox:last-of-type .editMovieDivider {
+  display: none;
+}
+
+.selectStars select {
+  height: 38px    !important;
+}
+
+.hideReviewCheckbox {
+  margin-bottom: 10px;
+}
+
+.hideReviewCheckbox label {
+  font-weight: normal   !important;
+  font-size: .92857143em       !important;
+}
+
+.hideReviewCheckbox label input {
+  margin-right: 5px      !important;
+  position: relative;
+  top: 4px;
+}
+
+@media only screen and (max-width: 980px) {
+  .headerArea {
+    height: var(--header-height-mobile);
+  }
+
+  ul.navbar li {
+    line-height: var(--header-height-mobile);
+  }
+
+  .titleArea {
+    display: block;
+  }
+
+  .mainTitle {
+    font-size: 34px;
+    line-height: 32px;
+    margin-top: 13px;
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+    border: 0px solid pink;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .secondaryTitle {
+    font-size: 12px;
+    line-height: 22px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    border: 0px solid blue;
+  }
+
+  .secondaryTitleBr {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .mobile {
+    display: initial;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  ul.navbar {
+    display: none;
+  }
+
+  .toggleSidebarButton {
+    display: block;
+  }
+
+  .navigationSidebar {
+    display: block !important;
+  }
+
+  .contentArea {
+    width: 100%;
+  }
+
+  .movieListItem {
+    grid-template-columns: 80px auto;
+  }
+
+  .movieListItemRightColumn {
+    padding-left: 10px;
+  }
+
+  .movieListItem img {
+    text-align: left;
+    width: 80px;
+  }
+
+  .linkButton {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .movieDisplayTitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .movieDirectors {
+    font-size: 13px;
+  }
+
+  .sourceNameAndReviewStars {
+    margin-right: 10px;
+  }
+
+  .starsOfOneReview {
+    min-width: 90px;
+  }
+
+  .sourceNameOfTheReview {
+    font-size: 12px;
+  }
+
+  .star-icon {
+    font-size: 15px;
+  }
+
+  .showInfo {
+    grid-template-columns: 120px auto;
+  }
+
+  .showPoster {
+    display: none;
+  }
+
+  .showInfoRightColumn {
+    padding-left: 5px;
+  }
+
+  .showTime {
+    font-size: 40px;
+    font-weight: 300;
+    padding-top: 12px;
+  }
+}
